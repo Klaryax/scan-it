@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup A — Resultado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F4F6; --surface:#FFFFFF; --ink:#12171E; --slate:#586273;
+    --faint:#8A93A0; --line:#E4E7EC; --line2:#EDEFF2; --signal:#0F6E66;
+    --sans:'IBM Plex Sans',ui-sans-serif,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    --r:6px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--paper); color:var(--ink); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased; line-height:1.55;
+    font-feature-settings:"ss01","cv05";
+  }
+  .wrap{max-width:940px; margin:0 auto; padding:34px 28px 64px}
+  .mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+  .eyebrow{font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--slate)}
+
+  /* top bar */
+  .top{display:flex; align-items:center; justify-content:space-between; padding-bottom:22px; border-bottom:1px solid var(--line)}
+  .brand{display:flex; align-items:center; gap:10px}
+  .mark{width:22px; height:22px; border-radius:5px; border:1.5px solid var(--ink); position:relative; flex:0 0 auto}
+  .mark::after{content:""; position:absolute; left:50%; top:3px; bottom:3px; width:1.5px; background:var(--signal); transform:translateX(-50%)}
+  .word{font-weight:600; letter-spacing:.02em; font-size:15px}
+  .word small{font-weight:400; color:var(--faint); letter-spacing:.14em; text-transform:uppercase; font-size:10px; margin-left:8px}
+  .tag{font-size:11px; color:var(--slate); border:1px solid var(--line); border-radius:100px; padding:4px 11px; background:var(--surface)}
+
+  /* hero */
+  .hero{padding:30px 0 8px}
+  h1{font-size:30px; font-weight:600; letter-spacing:-.015em; margin:10px 0 8px; line-height:1.15}
+  .sub{color:var(--slate); font-size:15px; max-width:60ch; margin:0}
+  .meta{display:flex; gap:26px; flex-wrap:wrap; margin-top:20px; padding-top:16px; border-top:1px solid var(--line2)}
+  .meta div{display:flex; flex-direction:column; gap:2px}
+  .meta b{font-weight:500; font-size:14px}
+  .meta span{font-size:11px; color:var(--faint); letter-spacing:.04em}
+
+  /* headline cards */
+  .focus{margin:30px 0 6px}
+  .focus-head{display:flex; align-items:baseline; gap:10px; margin-bottom:12px}
+  .focus-head h2{font-size:13px; font-weight:600; margin:0; letter-spacing:.01em}
+  .focus-head .hint{font-size:12px; color:var(--faint)}
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 15px; position:relative; overflow:hidden}
+  .card .dot{position:absolute; top:14px; right:14px; width:8px; height:8px; border-radius:50%}
+  .card .code{font-size:12px; color:var(--slate)}
+  .card .nm{font-size:13px; font-weight:500; margin:6px 0 12px; min-height:34px; line-height:1.3}
+  .card .val{font-size:26px; font-weight:500; letter-spacing:-.01em}
+  .card .scope{font-size:11px; color:var(--faint); margin-left:6px}
+
+  /* legend */
+  .legend{display:flex; align-items:center; gap:14px; margin:34px 0 6px; flex-wrap:wrap}
+  .legend .ramp{height:8px; width:200px; border-radius:100px}
+  .legend .lab{font-size:11px; color:var(--slate)}
+  .legend .ends{display:flex; justify-content:space-between; width:200px; font-size:10px; color:var(--faint)}
+
+  /* readout */
+  .domain{margin-top:22px}
+  .dhead{display:flex; align-items:center; gap:11px; padding:14px 0 8px; border-bottom:1px solid var(--line)}
+  .dcode{font-family:var(--mono); font-size:11px; font-weight:500; color:var(--signal); border:1px solid var(--line); border-radius:4px; padding:3px 7px; background:var(--surface)}
+  .dname{font-size:13px; font-weight:500}
+  .dcount{font-size:11px; color:var(--faint); margin-left:auto}
+
+  .row{display:grid; grid-template-columns:64px 1fr 280px 52px; align-items:center; gap:14px; padding:7px 6px; border-radius:var(--r); border-bottom:1px solid var(--line2)}
+  .row:last-child{border-bottom:none}
+  .row:hover{background:var(--surface)}
+  .row .rc{font-family:var(--mono); font-size:12px; color:var(--slate)}
+  .row .rn{font-size:13px; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .row .rv{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:13px; font-weight:500; text-align:right}
+
+  /* instrument bar */
+  .track{position:relative; height:22px}
+  .grid{position:absolute; inset:0}
+  .grid i{position:absolute; top:2px; bottom:2px; width:1px; background:var(--line)}
+  .grid i.mid{background:var(--line); width:1px; top:0; bottom:0}
+  .grid i.mid::before{content:""}
+  .bar{position:absolute; top:6px; height:10px; border-radius:2px; width:0; transition:width .7s cubic-bezier(.2,.7,.2,1)}
+  @media (prefers-reduced-motion:reduce){.bar{transition:none}}
+
+  .foot{margin-top:40px; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; color:var(--faint); font-size:11px; flex-wrap:wrap; gap:8px}
+
+  @media(max-width:680px){
+    .cards{grid-template-columns:1fr}
+    .row{grid-template-columns:58px 1fr 44px; gap:10px}
+    .row .track{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"></div>
+      <div class="word">Scan <span style="color:var(--signal)">IT</span></div>
+    </div>
+    <div class="tag">Evaluación gratuita</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">COBIT 2019 · Initial Scope</div>
+    <h1>Prioridades de tu gobierno de TI</h1>
+    <p class="sub">Según los factores de diseño que ingresaste, estos son los 40 objetivos de gobierno y gestión ordenados por su importancia relativa para tu organización. Lo cálido pide más foco; lo frío, menos que la línea base.</p>
+    <div class="meta">
+      <div><b>4 / 4</b><span>Factores ingresados</span></div>
+      <div><b>40</b><span>Objetivos evaluados</span></div>
+      <div><b class="mono">DF1–DF4</b><span>Alcance inicial</span></div>
+      <div><b>Hoy</b><span>Fecha de evaluación</span></div>
+    </div>
+  </div>
+
+  <div class="focus">
+    <div class="focus-head">
+      <h2>Foco recomendado</h2>
+      <span class="hint">los tres objetivos de mayor prioridad relativa</span>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+
+  <div class="legend">
+    <div>
+      <div class="ramp" id="ramp"></div>
+      <div class="ends"><span>−100</span><span>0</span><span>+100</span></div>
+    </div>
+    <div class="lab">menor prioridad&nbsp;&nbsp;·&nbsp;&nbsp;línea base&nbsp;&nbsp;·&nbsp;&nbsp;mayor prioridad</div>
+  </div>
+
+  <div id="readout"></div>
+
+  <div class="foot">
+    <span>Scan IT · generado a partir del COBIT 2019 Design Toolkit</span>
+    <span>Valores de demostración</span>
+  </div>
+
+</div>
+
+<script>
+const STOPS=[[-100,[40,86,126]],[-50,[108,144,176]],[0,[201,200,193]],[50,[206,145,86]],[100,[163,61,39]]];
+function lerp(a,b,t){return Math.round(a+(b-a)*t)}
+function color(g){
+  g=Math.max(-100,Math.min(100,g));
+  for(let i=0;i<STOPS.length-1;i++){
+    const [x0,c0]=STOPS[i],[x1,c1]=STOPS[i+1];
+    if(g>=x0&&g<=x1){const t=(g-x0)/(x1-x0);
+      return `rgb(${lerp(c0[0],c1[0],t)},${lerp(c0[1],c1[1],t)},${lerp(c0[2],c1[2],t)})`;}
+  }
+  return 'rgb(201,200,193)';
+}
+function fmt(g){return g>0?('+'+g):(g<0?('\u2212'+Math.abs(g)):'0')}
+
+const DOMAINS=[
+  {code:'EDM',name:'Evaluar, orientar y supervisar'},
+  {code:'APO',name:'Alinear, planificar y organizar'},
+  {code:'BAI',name:'Construir, adquirir e implementar'},
+  {code:'DSS',name:'Entregar, dar servicio y soporte'},
+  {code:'MEA',name:'Supervisar, evaluar y valorar'},
+];
+const D=[
+['EDM01','Ensured Governance Framework Setting & Maintenance',-10],
+['EDM02','Ensured Benefits Delivery',20],
+['EDM03','Ensured Risk Optimization',-15],
+['EDM04','Ensured Resource Optimization',-5],
+['EDM05','Ensured Stakeholder Engagement',-50],
+['APO01','Managed I&T Management Framework',10],
+['APO02','Managed Strategy',40],
+['APO03','Managed Enterprise Architecture',45],
+['APO04','Managed Innovation',100],
+['APO05','Managed Portfolio',15],
+['APO06','Managed Budget & Costs',-40],
+['APO07','Managed Human Resources',45],
+['APO08','Managed Relationships',55],
+['APO09','Managed Service Agreements',10],
+['APO10','Managed Vendors',-10],
+['APO11','Managed Quality',5],
+['APO12','Managed Risk',25],
+['APO13','Managed Security',15],
+['APO14','Managed Data',-10],
+['BAI01','Managed Programs',45],
+['BAI02','Managed Requirements Definition',30],
+['BAI03','Managed Solutions Identification & Build',35],
+['BAI04','Managed Availability & Capacity',25],
+['BAI05','Managed Organizational Change',65],
+['BAI06','Managed IT Changes',60],
+['BAI07','Managed IT Change Acceptance and Transitioning',45],
+['BAI08','Managed Knowledge',75],
+['BAI09','Managed Assets',-15],
+['BAI10','Managed Configuration',45],
+['BAI11','Managed Projects',65],
+['DSS01','Managed Operations',5],
+['DSS02','Managed Service Requests & Incidents',10],
+['DSS03','Managed Problems',10],
+['DSS04','Managed Continuity',5],
+['DSS05','Managed Security Services',-5],
+['DSS06','Managed Business Process Controls',20],
+['MEA01','Managed Performance and Conformance Monitoring',5],
+['MEA02','Managed System of Internal Control',-15],
+['MEA03','Managed Compliance with External Requirements',-25],
+['MEA04','Managed Assurance',-10],
+];
+
+document.getElementById('ramp').style.background=
+  `linear-gradient(90deg,${color(-100)},${color(-50)},${color(0)},${color(50)},${color(100)})`;
+
+const top=[...D].sort((a,b)=>b[2]-a[2]).slice(0,3);
+document.getElementById('cards').innerHTML=top.map(([c,n,g])=>`
+  <div class="card">
+    <span class="dot" style="background:${color(g)}"></span>
+    <div class="code mono">${c}</div>
+    <div class="nm">${n}</div>
+    <div class="val mono">${fmt(g)}<span class="scope">/100</span></div>
+  </div>`).join('');
+
+function bar(g){
+  const pct=Math.abs(g)/100*50;
+  const side=g>=0?`left:50%;`:`right:50%;`;
+  return `<div class="track">
+    <div class="grid">
+      <i style="left:0"></i><i style="left:25%"></i><i class="mid" style="left:50%"></i><i style="left:75%"></i><i style="left:100%"></i>
+    </div>
+    <div class="bar" data-w="${pct}" style="${side}background:${color(g)}"></div>
+  </div>`;
+}
+
+document.getElementById('readout').innerHTML=DOMAINS.map(dom=>{
+  const rows=D.filter(r=>r[0].startsWith(dom.code));
+  return `<div class="domain">
+    <div class="dhead">
+      <span class="dcode">${dom.code}</span>
+      <span class="dname">${dom.name}</span>
+      <span class="dcount">${rows.length} objetivos</span>
+    </div>
+    ${rows.map(([c,n,g])=>`
+      <div class="row">
+        <span class="rc">${c}</span>
+        <span class="rn" title="${n}">${n}</span>
+        ${bar(g)}
+        <span class="rv">${fmt(g)}</span>
+      </div>`).join('')}
+  </div>`;
+}).join('');
+
+requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  document.querySelectorAll('.bar').forEach((b,i)=>{
+    setTimeout(()=>{b.style.width=b.dataset.w+'%';}, 60+i*9);
+  });
+}));
+</script>
+</body>
+</html>
